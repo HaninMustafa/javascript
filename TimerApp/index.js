@@ -22,10 +22,16 @@ class Timer {
   };
 
   tick = () => {
-    //this below is a string and we need to turn it into a number
-    const timeRemaining = parseFloat(this.durationInput.value);
-    this.durationInput.value = timeRemaining - 1;
+    this.timeRemaining = this.timeRemaining - 1;
   };
+  //Getters
+  get timeRemaining() {
+    return parseFloat(this.durationInput.value);
+  }
+  //Setters : set the value inside out input ,, the setted value is the time
+  set timeRemaining(time) {
+    this.durationInput.value = time;
+  }
 }
 
 const durationInput = document.querySelector("#duration");
