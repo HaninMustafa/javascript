@@ -17,13 +17,14 @@ class Timer {
   start = () => {
     //we need to check if onStart is added as it is optional
     if (this.onStart) {
-      this.onStart();
+      //the time found when the start is clicked is the total duration time
+      this.onStart(this.timeRemaining);
     }
     this.tick();
     //will run the function once every second .. but it will wait one sec!
     // const interval = setInterval(this.tick, 1000);
     //to make the variable shared to the pause function we change it to this.interval
-    this.interval = setInterval(this.tick, 1000);
+    this.interval = setInterval(this.tick, 20);
   };
 
   pause = () => {
@@ -37,9 +38,11 @@ class Timer {
         this.onComplete();
       }
     } else {
-      this.timeRemaining = this.timeRemaining - 1;
+      this.timeRemaining = this.timeRemaining - 0.02;
       if (this.onTick) {
-        this.onTick();
+        //we want to give the world access to the time remaing for the circle offSet
+        //so we pass it to the function below!
+        this.onTick(this.timeRemaining);
       }
     }
   };
@@ -49,6 +52,7 @@ class Timer {
   }
   //Setters : set the value inside out input ,, the setted value is the time
   set timeRemaining(time) {
-    this.durationInput.value = time;
+    //toFixed is used to ignore all the decimals except the value inside,, here it is 2
+    this.durationInput.value = time.toFixed(2);
   }
 }

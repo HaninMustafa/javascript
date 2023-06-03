@@ -1,34 +1,37 @@
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+  </head>
 
-<body>
-    <!-- stroke-dasharray= 10 is for dash long and 5 is for the space between them -->
-    <!-- to make the direction go counter clockwise we make the stroke-dashoffset negative -->
-    <svg width="200" height="200">
-        <circle r="90" cx="100" cy="100" fill="transparent" 
-        stroke="black" 
-        stroke-width="10" 
-        stroke-dasharray="566"
-        stroke-dashoffset="-0"
-        transform="rotate(-90 100 100)"
+  <body>
+    <div class="timer">
+      <div class="controls">
+        <input id="duration" value="3" />
+        <div>
+          <button id="start"><i class="fas fa-play"></i></button>
+          <button id="pause"><i class="fas fa-pause"></i></button>
+        </div>
+      </div>
+      <svg class="dial">
+        <circle
+          fill="transparent"
+          stroke="green"
+          stroke-width="15"
+          r="190"
+          cx="0"
+          cy="200"
+          transform="rotate(-90 100 100)"
         />
-    </svg>
+      </svg>
+    </div>
 
-
-    <input type="text" id="duration" value="30">
-    <button id="start">Start</button>
-    <button id="pause">Pause</button>
-
-    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <script src="./timer.js"></script>
-    <script src="./index.js"></script>
-
-</body>
-
+    <script src="timer.js"></script>
+    <script src="index.js"></script>
+  </body>
 </html>
